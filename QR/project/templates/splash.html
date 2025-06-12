@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My PWA</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/splash.css') }}">
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.js') }}">
+  <meta name="theme-color" content="#000">
+  <script>
+  // Apply dark mode BEFORE page renders
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark-mode');
+    document.querySelector('meta[name="theme-color"]')
+      .setAttribute('content', '#121212');
+  }
+
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark');
+  }
+});
+
+
+  if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/static/sw.js')
+      .then(reg => console.log('Service Worker registered', reg))
+      .catch(err => console.error('Service Worker registration failed', err));
+  });
+}
+
+</script>
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <div class="splash-content">
+      <img src="{{ url_for('static', filename='images/logo-t.png') }}" alt="App Logo" class="splash-logo">
+      <h1 class="splash-title">ScanTrust</h1>
+      <div class="splash-loader"></div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/splash.js') }}"></script>
+</body>
+</html>

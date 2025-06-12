@@ -1,0 +1,11 @@
+Threat Type     |   URL
+
+Facebook        :   https://facebook.com
+
+Google          :   https://google.com
+
+Spotify         :   https://spotify.com
+
+Wikipedia       :   https://wikipedia.com
+
+YouTube         :   https://youtube.com

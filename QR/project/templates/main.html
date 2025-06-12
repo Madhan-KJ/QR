@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScanFlow - QR Scanner</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css' )}}">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header">
+            <button class="history-btn" id="history-btn" aria-label="View history">
+                <span class="material-icons">history</span>
+            </button>
+            
+            <img src="{{url_for('static', filename='images/logo.png' )}}" alt="ScanFlow" class="app-logo">
+            
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <span class="material-icons">brightness_4</span>
+            </button>
+        </div>
+
+        <!-- Camera Section -->
+        <div class="camera-container">
+            <div class="camera-placeholder" id="camera-placeholder">
+                <span class="material-icons">photo_camera</span>
+                <p class="placeholder-text">Tap to start camera</p>
+            </div>
+
+            <!-- FIXED: replaced <video> with a <div> -->
+            <div id="qr-video"></div>
+            <div id="qr-shaded-region" class="qr-shaded-region" style="display: none;"></div>
+
+            <button class="upload-btn" id="upload-btn" aria-label="Upload QR image">
+                <span class="material-icons">image</span>
+                Upload QR Image
+            </button>
+        </div>
+
+
+        <!-- Bottom Panel -->
+        <div class="bottom-panel">
+            <div class="input-container">
+                <input type="text" class="url-input" id="url-input" placeholder="Enter URL manually" aria-label="URL input">
+                <button class="paste-btn" id="paste-btn" aria-label="Paste or Go">
+                    <span class="material-icons icon">content_paste</span>
+                    <span class="text">Paste</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR code scanner library -->
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <!-- Your JavaScript logic -->
+    <script src="{{url_for('static', filename='js/main.js' )}}" defer></script>
+</body>
+</html>

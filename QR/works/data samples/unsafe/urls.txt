@@ -1,0 +1,7 @@
+Threat Type         |  URL
+ 
+Malware             :  http://testsafebrowsing.appspot.com/s/malware.html
+
+Social Engineering  :  http://testsafebrowsing.appspot.com/s/phishing.html
+
+Unwanted Software   :  http://testsafebrowsing.appspot.com/s/unwanted.html

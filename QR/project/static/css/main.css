@@ -1,0 +1,329 @@
+:root {
+  --primary-color: #8a0337;
+  --secondary-color: #03dac6;
+
+  --background-light: #ffffff;
+  --surface-light: #f5f5f5;
+  --text-light: #000000;
+
+  --background-dark: #121212;
+  --surface-dark: #003451;
+  --text-dark: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-light);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+body.dark-mode {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: background 0.4s ease;
+}
+
+.dark-mode .header {
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* BUTTONS */
+.history-btn,
+.theme-toggle {
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 6px #60253c;
+}
+
+.dark-mode .history-btn,
+.dark-mode .theme-toggle {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 5px #003451;
+}
+
+.history-btn:hover,
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.35);
+  transform: scale(1.1);
+}
+
+.dark-mode .history-btn:hover,
+.dark-mode .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* LOGO */
+.app-logo {
+  height: 36px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* CAMERA SECTION */
+.camera-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 15px;
+  transition: all 0.4s ease;
+}
+
+.camera-placeholder {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 6 / 1;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#qr-video {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
+}
+
+#qr-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* RESPONSIVE TWEAKS */
+@media (max-width: 600px) {
+  .camera-placeholder {
+    font-size: 14px;
+  }
+
+  #qr-video {
+    max-width: 90vw;
+  }
+}
+
+/* UPLOAD BUTTON */
+.upload-btn {
+  background: rgba(0, 0, 0, 0.4);
+  color: #e5e5e5;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 26px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px #8a0337;
+}
+
+.dark-mode .upload-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #d7d7d7;
+  box-shadow: 0 3px 8px #004970;
+}
+
+.upload-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.05);
+}
+
+/* BOTTOM PANEL */
+.bottom-panel {
+  background-color: var(--primary-color);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 24px 20px;
+  color: white;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+  transition: background 0.4s ease;
+
+  flex-shrink: 0; /* Prevents it from pushing past the viewport */
+  overflow: hidden; /* contain any possible shadow bleed */
+}
+
+.dark-mode .bottom-panel {
+  background-color: var(--surface-dark);
+}
+
+/* INPUTS */
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.url-input {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  background-color: #380016be;
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.dark-mode .url-input {
+  background-color: #001827;
+  color: #fff;
+}
+
+.url-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* PASTE BUTTON */
+.paste-btn {
+  background-color: var(--secondary-color);
+  color: black;
+  border: none;
+  border-radius: 25px;
+  width: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.paste-btn.has-text {
+  width: 80px;
+}
+
+.paste-btn .text {
+  display: none;
+}
+
+.paste-btn.has-text .icon {
+  display: none;
+}
+
+.paste-btn.has-text .text {
+  display: block;
+}
+
+/* TWEAKS */
+.history-btn,
+.theme-toggle {
+  margin: 0 5px;
+}
+
+.upload-btn {
+  margin-top: 14px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 15px;
+  }
+
+  .upload-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .url-input {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .paste-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .paste-btn.has-text {
+    width: 60px;
+  }
+
+  .bottom-panel {
+    padding: 18px;
+  }
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.fullscreen-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

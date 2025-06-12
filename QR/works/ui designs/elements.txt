@@ -1,0 +1,11 @@
+//elements required
+
+
+front page - logo, name, bg -- splash screen
+
+main - qr area, upload image, mode, history, enter url, paste url (change to submit)
+review 1 - qr, url, copy url, feedback, visit//, visit anyway//, clear
+review 2 - url, copy url, feedback, visit//, visit anyway//, clear
+
+feedback -- icon green/red, verification, threat
+history -- list of - url, name, time, //color//, //info// -- reverse list with num

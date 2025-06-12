@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Security Review - ScanFlow</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/result.css')}}" />
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header">
+            <button class="back-btn" id="back-btn" aria-label="Go Back">
+                <span class="material-icons">arrow_back</span>
+                Back
+            </button>
+        </div>
+
+        <!-- URL Display -->
+        <div class="url-container">
+            <div class="url-text" id="url-text" tabindex="0" aria-label="Scanned URL">https://www.example.com/safe-page</div>
+            <button class="copy-btn" id="copy-btn" aria-label="Copy URL to clipboard">
+                <span class="material-icons">content_copy</span>
+            </button>
+        </div>
+
+        <!-- Result Section -->
+        <div class="result-container safe-result" id="result-container" role="region" aria-live="polite">
+            <div class="result-icon safe-icon">
+                <span class="material-icons" id="result-icon">check_circle</span>
+            </div>
+            <h2 class="result-title" id="result-title">This URL is safe!</h2>
+            <p class="result-description" id="result-description">
+                This website has been verified and contains no known threats.
+            </p>
+            <div id="threat-types-container" aria-label="Threat types"></div>
+            <p class="result-details" id="result-details"></p>
+        </div>
+
+        <!-- Add this after the result-container div -->
+        <div class="threat-details-container" id="threat-details-container" style="display: none;">
+            <h3 class="threat-details-title">Threats Detected:</h3>
+            <div class="threat-details-content" id="threat-details-content"></div>
+        </div>
+
+        <!-- Action Button -->
+        <button class="action-btn safe-btn" id="action-btn" aria-label="Visit Website">
+            Visit Website
+        </button>
+    </div>
+
+    <script src="{{url_for('static', filename='js/result.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+:root {
+    --primary-color: #8a0337;
+    --secondary-color: #03dac6;
+    --background-light: #ffffff;
+    --surface-light: #f5f5f5;
+    --text-light: #000000;
+    --background-dark: #121212;
+    --surface-dark: #003451;
+    --text-dark: #ffffff;
+    --safe-color: #4caf50;
+    --unsafe-color: #f44336;
+    --warning-color: #ff9800;
+    --font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-light);
+    color: var(--text-light);
+    transition: background-color 0.3s, color 0.3s;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+body.dark-mode .header {
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+body.dark-mode .back-btn {
+    color: var(--secondary-color);
+}
+
+.back-btn:hover,
+.back-btn:focus {
+    color: var(--secondary-color);
+    outline: none;
+}
+
+/* Source Indicator */
+.source-indicator {
+    padding: 8px 15px;
+    margin: 15px;
+    border-radius: 20px;
+    background-color: var(--surface-light);
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+}
+
+body.dark-mode .source-indicator {
+    background-color: #2a2a2a;
+}
+
+
+
+/* URL Display */
+.url-container {
+    padding: 15px;
+    margin: 0 15px 15px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    position: relative;
+    user-select: text;
+    color: white;
+    margin-top: 15px;
+}
+
+body.dark-mode .url-container {
+    background-color: var(--surface-dark);
+}
+
+.url-text {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 10px;
+    font-size: 1rem;
+}
+
+.copy-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.copy-btn:hover,
+.copy-btn:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    outline: none;
+}
+
+body.dark-mode .copy-btn {
+    color: var(--secondary-color);
+}
+
+body.dark-mode .copy-btn:hover,
+body.dark-mode .copy-btn:focus {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Result Section */
+.result-container {
+    text-align: center;
+    padding: 20px;
+    margin: 0 15px 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.result-icon {
+    font-size: 80px;
+    margin-bottom: 15px;
+}
+
+.result-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.result-description {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: rgba(0, 0, 0, 0.7);
+    transition: color 0.3s;
+}
+
+body.dark-mode .result-description {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.threat-type {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 0.8rem;
+    margin: 3px;
+    user-select: none;
+}
+
+.safe-result {
+    background-color: #e8f5e9; /* light green */
+    color: var(--safe-color);
+}
+
+.unsafe-result {
+    background-color: #ffebee; /* light red */
+    color: var(--unsafe-color);
+}
+
+.warning-result {
+    background-color: #fff8e1; /* light yellow */
+    color: var(--warning-color);
+}
+
+.safe-icon {
+    color: var(--safe-color);
+}
+
+.unsafe-icon {
+    color: var(--unsafe-color);
+}
+
+.warning-icon {
+    color: var(--warning-color);
+}
+
+
+/* Action Button */
+.action-btn {
+    margin: 0 15px 30px;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    width: calc(100% - 30px);
+    transition: background-color 0.3s, color 0.3s;
+    user-select: none;
+}
+
+.safe-btn {
+    background-color: var(--safe-color);
+    color: #fff;
+}
+
+.unsafe-btn {
+    background-color: var(--unsafe-color);
+    color: #fff;
+}
+
+.warning-btn {
+    background-color: var(--warning-color);
+    color: #fff;
+}
+
+.action-btn:hover,
+.action-btn:focus {
+    filter: brightness(0.9);
+    outline: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .result-icon {
+        font-size: 60px;
+    }
+    .action-btn {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .qr-image-container {
+        min-height: 300px; /* ensures enough space */
+    }
+}
+
+/* Threat Details Container */
+.threat-details-container {
+    margin: 0 15px 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ffebee; /* light red background */
+    display: none; /* Hidden by default */
+}
+
+.threat-details-title {
+    margin: 0 0 10px 0;
+    font-size: 0.8rem;
+    color: #757575;
+}
+
+.threat-item {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(211, 47, 47, 0.2);
+}
+
+.threat-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.threat-type-label {
+    font-weight: 600;
+    color: var(--unsafe-color);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.threat-description {
+    color: #4d4d4d;
+    font-size: 0.9rem;
+}
+
+body.dark-mode .threat-details-container {
+    background-color: #2a0a0a;
+}
+
+body.dark-mode .threat-type-label {
+    color: #ff4c3c;
+}
+
+body.dark-mode .threat-description,
+body.dark-mode .threat-details-title {
+    color: #dbdbdb;
+}
