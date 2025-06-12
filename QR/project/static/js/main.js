@@ -74,9 +74,13 @@ initializeTheme();
 
         Html5Qrcode.getCameras().then(cameras => {
             if (cameras && cameras.length) {
-                const cameraId = cameras[0].id;
+                const rearCamera = cameras.find(camera => 
+                camera.label.toLowerCase().includes("back") || 
+                camera.label.toLowerCase().includes("rear") ||
+                camera.label.toLowerCase().includes("environment")
+            ) || cameras[0]; // Fallback to first camera if rear isn't found
                 html5QrCode.start(
-                    cameraId,
+                    rearCamera.id,
                     config,
                     decodedText => {
                         sendToBackend(decodedText);
