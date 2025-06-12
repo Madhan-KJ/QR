@@ -4,9 +4,11 @@ import json
 from urllib.parse import quote, unquote
 from flask_cors import CORS
 import time, datetime
+import os
 
 app = Flask(__name__)
 CORS(app)
+port = int( os.environ.get("PORT") )
 
 GOOGLE_API_KEY = 'AIzaSyC9NIYQji8k6zcBQNDx5Xm14_fe2qQJOfQ' 
 SAFE_BROWSING_URL = 'https://safebrowsing.googleapis.com/v4/threatMatches:find'
@@ -137,5 +139,4 @@ def error_page():
     return f"Error: {error_message}", 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    app.run(debug=True, host="0.0.0.0", port=port)
